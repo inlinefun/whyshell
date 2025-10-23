@@ -39,11 +39,7 @@ MouseArea {
     }
     onWheel: (event) => {
         event.accepted = true
-        var shiftBy = 10
         var shouldIncrement = event.angleDelta.y > 0
-        if (event.modifiers & Qt.ControlModifier || event.modifiers & Qt.ShiftModifier) {
-            shiftBy = 2
-        }
-        DisplayService.changeBy(shiftBy, shouldIncrement)
+        DisplayService.changeBy(5, shouldIncrement)
     }
 }
