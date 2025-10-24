@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 
 import qs.common
+import qs.common.animations
 import qs.common.components
 import qs.services
 
@@ -32,6 +33,9 @@ RowLayout {
                 color: Colors.surface
                 opacity: PowerService.charging ? 1 : 0
                 visible: opacity > 0 ? true : false
+                Behavior on opacity {
+                    AnimateNumber { }
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 import QtQuick
 
 import qs.common
+import qs.common.animations
 import qs.icons
 import qs.services
 
@@ -14,6 +15,9 @@ MouseArea {
         anchors.centerIn: parent
         iconSize: 24
         color: PipewireService.muted ? Colors.error : Colors.on_surface
+        Behavior on color {
+            AnimateColor { }
+        }
     }
     VolumeLayer1 {
         anchors.centerIn: parent
@@ -30,11 +34,17 @@ MouseArea {
     Rectangle {
         anchors.centerIn: parent
         width: 2
-        height: 24
+        height: PipewireService.muted ? 24 : 0
         radius: 2
         rotation: -45
         color: layer0.color
         opacity: PipewireService.muted ? 1 : 0
+        Behavior on opacity {
+            AnimateNumber { }
+        }
+        Behavior on height {
+            AnimateNumber { }
+        }
     }
     onClicked: (event) => {
         if (event.button == Qt.MiddleButton) {
