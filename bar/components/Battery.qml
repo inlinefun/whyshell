@@ -5,10 +5,9 @@ import qs.animations
 import qs.common
 import qs.services
 
-Rectangle {
+Item {
     implicitWidth: Constants.barHeight
     implicitHeight: Constants.barHeight
-    color: "transparent"
     RowLayout {
         id: layout
 
