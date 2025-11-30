@@ -5,14 +5,35 @@ import Quickshell.Services.Pipewire
 
 Singleton {
     id: root
+
     readonly property PwNode sink: Pipewire.defaultAudioSink
     readonly property bool ready: sink?.ready ?? false
     readonly property PwNodeAudio audio: ready ? sink.audio : null
     readonly property bool muted: ready ? audio?.muted : false ?? false
     readonly property int volume: ready ? Math.round(audio.volume * 100) : -1
+    property bool _init: false
+    signal onVolumeChange
+    signal onMuteChange
+
+    onVolumeChanged: () => {
+        if (!_init) {
+            _init = true;
+            return;
+        }
+        root.onVolumeChange();
+    }
+    onMutedChanged: () => {
+        if (!_init) {
+            _init = true;
+            return;
+        }
+        root.onMuteChange();
+    }
+
     PwObjectTracker {
         objects: [root.sink, root.audio]
     }
+
     function toggleMute() {
         audio.muted = !muted;
     }
