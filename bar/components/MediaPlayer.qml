@@ -72,7 +72,14 @@ MouseArea {
                 }
             }
             StyledText {
-                text: MediaService.track
+                readonly property string label: MediaService.track
+                text: {
+                    const maxLength = 20;
+                    if (label.length > 20) {
+                        return label.substring(0, maxLength + 1) + "...";
+                    }
+                    return label;
+                }
             }
         }
     }
