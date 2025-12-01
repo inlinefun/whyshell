@@ -12,11 +12,34 @@ Singleton {
     property MprisPlayer player: null
     property MprisPlayer lastPlayer: null
     property var players: new Set()
-
     readonly property real progress: player?.position / player?.length ?? 0.0
     readonly property bool canPause: player?.canPause ?? false
     readonly property bool playing: player?.isPlaying ?? false
     readonly property string track: player?.trackTitle ?? "Unknown"
+    property bool _init: false
+    signal onStatusChange
+
+    onPlayingChanged: () => {
+        if (!_init) {
+            _init = true;
+            return;
+        }
+        root.onStatusChange();
+    }
+    onPlayerChanged: () => {
+        if (!_init) {
+            _init = true;
+            return;
+        }
+        root.onStatusChange();
+    }
+    onTrackChanged: () => {
+        if (!_init) {
+            _init = true;
+            return;
+        }
+        root.onStatusChange();
+    }
 
     function updatePlayer() {
         let leader = null;

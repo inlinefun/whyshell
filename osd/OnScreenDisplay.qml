@@ -12,7 +12,7 @@ import qs.services
 PanelWindow {
     id: root
 
-    readonly property bool show: volume.show | power.show
+    readonly property bool show: volume.show | power.show | media.show
     property int _timer: show ? 1 : 0
 
     anchors {
@@ -46,6 +46,9 @@ PanelWindow {
             PowerProfilesOSD {
                 id: power
             }
+            MediaOSD {
+                id: media
+            }
         }
     }
     Component.onCompleted: {
@@ -57,6 +60,9 @@ PanelWindow {
         });
         PowerService.onProfileChange.connect(() => {
             power.resetTimer();
+        });
+        MediaService.onStatusChange.connect(() => {
+            media.resetTimer();
         });
     }
     Behavior on _timer {
