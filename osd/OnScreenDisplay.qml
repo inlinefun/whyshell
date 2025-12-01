@@ -12,7 +12,7 @@ import qs.services
 PanelWindow {
     id: root
 
-    readonly property bool show: volume.show
+    readonly property bool show: volume.show | power.show
     property int _timer: show ? 1 : 0
 
     anchors {
@@ -43,6 +43,9 @@ PanelWindow {
             VolumeOSD {
                 id: volume
             }
+            PowerProfilesOSD {
+                id: power
+            }
         }
     }
     Component.onCompleted: {
@@ -51,6 +54,9 @@ PanelWindow {
         });
         AudioService.onMuteChange.connect(() => {
             volume.resetTimer();
+        });
+        PowerService.onProfileChange.connect(() => {
+            power.resetTimer();
         });
     }
     Behavior on _timer {
