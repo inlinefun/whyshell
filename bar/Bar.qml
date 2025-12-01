@@ -38,6 +38,7 @@ PanelWindow {
             right: parent.right
             bottom: parent.bottom
         }
+        PowerProfiles {}
         Volume {}
         Battery {}
     }
