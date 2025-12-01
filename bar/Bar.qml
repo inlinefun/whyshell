@@ -21,6 +21,7 @@ PanelWindow {
             left: parent.left
             bottom: parent.bottom
         }
+        MediaPlayer {}
     }
 
     RowLayout {
