@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 
 import qs.common
+import qs.common.components
 
 Rectangle {
     id: container
@@ -9,17 +10,14 @@ Rectangle {
     implicitWidth: label.implicitWidth + 15
     color: Colors.surface_container
     radius: container.implicitWidth
-    Text {
+    StyledText {
         id: label
         text: Qt.formatDateTime(clock.date, "hh:mm A | MMM dd")
         color: Colors.on_surface
         anchors {
             centerIn: parent
         }
-        font {
-            pixelSize: 18
-            family: Constants.fontFamily
-        }
+        size: 18
     }
     SystemClock {
         id: clock
