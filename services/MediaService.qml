@@ -13,6 +13,7 @@ Singleton {
     property MprisPlayer lastPlayer: null
     property var players: new Set()
 
+    readonly property real progress: player?.position / player?.length ?? 0.0
     readonly property bool canPause: player?.canPause ?? false
     readonly property bool playing: player?.isPlaying ?? false
     readonly property string track: player?.trackTitle ?? "Unknown"
@@ -56,6 +57,13 @@ Singleton {
                 root.handlePlayerChanged(modelData);
             }
         }
+    }
+
+    Timer {
+        running: root.player?.playbackState == MprisPlaybackState.Playing ?? false
+        repeat: true
+        interval: 1000
+        onTriggered: root.player?.positionChanged()
     }
 
     function pauseAll() {

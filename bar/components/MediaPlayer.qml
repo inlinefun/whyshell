@@ -22,8 +22,13 @@ MouseArea {
             MediaService.togglePlaying();
         }
     }
+    visible: rect.opacity > 0
 
     Rectangle {
+        id: rect
+
+        property real progress: MediaService.progress
+
         anchors {
             fill: parent
         }
@@ -81,6 +86,13 @@ MouseArea {
                     return label;
                 }
             }
+        }
+        MediaPlayerProgress {
+            radius: rect.radius
+            progress: rect.progress
+        }
+        Behavior on progress {
+            AnimateNumber {}
         }
     }
 }
