@@ -13,3 +13,7 @@ Just another minimal(?) quickshell configuration
 Icons are generated with [svgtoqml](https://doc.qt.io/qt-6/qtqml-tooling-svgtoqml.html)
 > Note: svgtoqml is not available in the `$PATH` on arch.
 > You could add `/usr/lib/qt6/bin/` to the `$PATH` or use `svgtoqml` from there
+
+### References
+
+- [fufexan's dotfiles](https://github.com/fufexan/dotfiles)
