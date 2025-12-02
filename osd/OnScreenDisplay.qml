@@ -12,7 +12,7 @@ import qs.services
 PanelWindow {
     id: root
 
-    readonly property bool show: volume.show | power.show | media.show
+    readonly property bool show: volume.show | power.show | media.show | brightness.show
     property int _timer: show ? 1 : 0
 
     anchors {
@@ -43,6 +43,9 @@ PanelWindow {
             VolumeOSD {
                 id: volume
             }
+            BrightnessOSD {
+                id: brightness
+            }
             PowerProfilesOSD {
                 id: power
             }
@@ -63,6 +66,9 @@ PanelWindow {
         });
         MediaService.onStatusChange.connect(() => {
             media.resetTimer();
+        });
+        BrightnessService.onBrightnessChange.connect(() => {
+            brightness.resetTimer();
         });
     }
     Behavior on _timer {
