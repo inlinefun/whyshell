@@ -17,6 +17,7 @@ Singleton {
     readonly property bool playing: player?.isPlaying ?? false
     readonly property string track: player?.trackTitle ?? "Unknown"
     readonly property string artist: player?.trackArtist ?? null
+    readonly property string url: player?.trackArtUrl ?? ""
     property bool _init: false
     signal onStatusChange
 

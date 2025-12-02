@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Widgets
 
 import qs.animations
 import qs.common
@@ -21,6 +22,29 @@ OSDItem {
 
             Layout.fillHeight: true
             implicitWidth: height
+            ClippingRectangle {
+                id: artContainer
+                readonly property int artSize: 36
+                implicitWidth: artSize
+                implicitHeight: artSize
+                anchors {
+                    centerIn: parent
+                }
+                visible: opacity > 0.0
+                opacity: MediaService.url == null || art.status !== Image.Ready ? 0 : 1
+                radius: 5
+                IconImage {
+                    id: art
+                    anchors {
+                        fill: parent
+                    }
+                    asynchronous: true
+                    source: MediaService.url
+                }
+                Behavior on opacity {
+                    AnimateNumber {}
+                }
+            }
             MusicNoteIcon {
                 id: icon
                 anchors {
@@ -28,6 +52,11 @@ OSDItem {
                 }
                 color: container.color
                 size: container.iconSize
+                opacity: MediaService.url == null || art.status !== Image.Ready ? 1 : 0
+                visible: opacity > 0.0
+                Behavior on opacity {
+                    AnimateNumber {}
+                }
             }
             Rectangle {
                 anchors {
@@ -36,7 +65,7 @@ OSDItem {
                 implicitWidth: 2
                 implicitHeight: MediaService.playing ? 0 : container.iconSize
                 color: container.color
-                opacity: MediaService.playing ? 0 : 1
+                opacity: !MediaService.playing && MediaService.url == null || art.status !== Image.Ready ? 1 : 0
                 rotation: -45
                 Behavior on implicitHeight {
                     AnimateNumber {}
