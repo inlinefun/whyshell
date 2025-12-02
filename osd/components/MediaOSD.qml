@@ -24,7 +24,7 @@ OSDItem {
             implicitWidth: height
             ClippingRectangle {
                 id: artContainer
-                readonly property int artSize: 36
+                readonly property int artSize: 50
                 implicitWidth: artSize
                 implicitHeight: artSize
                 anchors {
