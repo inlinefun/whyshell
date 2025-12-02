@@ -52,28 +52,35 @@ OSDItem {
         ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            RowLayout {
-                id: textLayout
-
-                readonly property int fontSize: 16
+            StyledText {
                 Layout.topMargin: 8
-                Layout.rightMargin: 12
-
-                StyledText {
-                    readonly property string label: MediaService.track
-                    text: {
-                        const maxLength = 20;
-                        if (label.length > maxLength) {
-                            return label.substring(0, maxLength + 1) + "...";
-                        }
-                        return label;
+                readonly property string label: MediaService.track
+                text: {
+                    const maxLength = 20;
+                    if (label.length > maxLength) {
+                        return label.substring(0, maxLength + 1) + "...";
                     }
-                    color: Colors.on_surface
-                    size: textLayout.fontSize
+                    return label;
                 }
+                color: Colors.on_surface
+                size: 14
             }
-            Item {
-                Layout.fillHeight: true
+            StyledText {
+                text: {
+                    var artist = MediaService.artist;
+                    if (artist != null) {
+                        const maxLength = 20;
+                        if (artist.length > maxLength) {
+                            artist = artist.substring(0, maxLength + 1) + "...";
+                        }
+                    } else {
+                        return "";
+                    }
+                    return "by " + artist;
+                }
+                color: Colors.on_surface_variant
+                size: 10
+                visible: text.length > 0
             }
             Rectangle {
                 id: barContainer
