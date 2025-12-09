@@ -8,7 +8,7 @@ import qs.services
 
 MouseArea {
     id: root
-    property color color: BluetoothService.enabled ? Colors.on_surface : BluetoothService.connected ? Colors.primary : Colors.error
+    property color color: BluetoothService.enabled ? BluetoothService.connected ? Colors.primary : Colors.error : Colors.on_surface
     Layout.fillHeight: true
     implicitWidth: height
     acceptedButtons: Qt.LeftButton
