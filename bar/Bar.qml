@@ -39,6 +39,7 @@ PanelWindow {
             right: parent.right
             bottom: parent.bottom
         }
+        Bluetooth {}
         PowerProfiles {}
         Volume {}
         Battery {}
