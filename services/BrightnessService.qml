@@ -21,12 +21,12 @@ Singleton {
             if (brightness == 100) {
                 return;
             }
-            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"])
+            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"]);
         } else {
             if (brightness == 0) {
                 return;
             }
-            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"])
+            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%-"]);
         }
     }
 
