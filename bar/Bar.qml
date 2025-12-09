@@ -41,6 +41,7 @@ PanelWindow {
         }
         Bluetooth {}
         PowerProfiles {}
+        Brightness {}
         Volume {}
         Battery {}
     }

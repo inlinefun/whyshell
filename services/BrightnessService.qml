@@ -17,7 +17,17 @@ Singleton {
     signal onBrightnessChange
 
     function changeBrightness(increment: bool) {
-
+        if (increment) {
+            if (brightness == 100) {
+                return;
+            }
+            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"])
+        } else {
+            if (brightness == 0) {
+                return;
+            }
+            Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"])
+        }
     }
 
     on_ValueChanged: {

@@ -10,7 +10,6 @@ import qs.osd
 import qs.services
 
 OSDItem {
-    show: true
     RowLayout {
         anchors {
             fill: parent
