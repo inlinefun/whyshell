@@ -13,6 +13,11 @@ Singleton {
     readonly property bool switching: state === BluetoothAdapterState.Enabling || state === BluetoothAdapterState.Disabling
     readonly property bool connected: devices.some((device) => device.connected)
 
+    signal onUpdate
+
+    onDevicesChanged: root.onUpdate()
+    onConnectedChanged: root.onUpdate()
+    onStateChanged: root.onUpdate()
     function toggle() {
         device.enabled = !device.enabled
     }
