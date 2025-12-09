@@ -16,6 +16,10 @@ Singleton {
     property bool _init: false
     signal onBrightnessChange
 
+    function changeBrightness(increment: bool) {
+
+    }
+
     on_ValueChanged: {
         if (!_init) {
             _init = true;
