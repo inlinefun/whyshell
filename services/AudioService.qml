@@ -31,7 +31,7 @@ Singleton {
     }
 
     PwObjectTracker {
-        objects: [root.sink, root.audio]
+        objects: [root.sink]
     }
 
     function toggleMute() {
