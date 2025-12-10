@@ -95,9 +95,10 @@ OSDItem {
                 size: 14
             }
             StyledText {
+                id: artist
                 text: {
                     var artist = MediaService.artist;
-                    if (artist != null) {
+                    if (artist !== null && artist.length > 0) {
                         const maxLength = 20;
                         if (artist.length > maxLength) {
                             artist = artist.substring(0, maxLength + 1) + "...";
@@ -110,6 +111,9 @@ OSDItem {
                 color: Colors.on_surface_variant
                 size: 10
                 visible: text.length > 0
+            }
+            Item {
+                visible: artist.text.length <= 0
             }
             Rectangle {
                 id: barContainer
