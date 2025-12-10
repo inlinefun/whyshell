@@ -7,7 +7,7 @@ import qs.services
 
 MouseArea {
     id: root
-    property color color: BrightnessService.brightness <= 20 ? Colors.error : Colors.on_surface
+    property color color: BrightnessService.brightness == 100 ? Colors.primary : BrightnessService.brightness <= 20 ? Colors.error : Colors.on_surface
     implicitWidth: Constants.barHeight
     implicitHeight: Constants.barHeight
     onWheel: event => {
