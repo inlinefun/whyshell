@@ -9,12 +9,13 @@ import qs.services
 MouseArea {
     id: root
     property color color: BluetoothService.enabled ? BluetoothService.connected ? Colors.primary : Colors.on_surface : Colors.error
+    hoverEnabled: true
     Layout.fillHeight: true
     implicitWidth: height
     acceptedButtons: Qt.LeftButton
     onClicked: event => {
         if (event.button == Qt.LeftButton) {
-            BluetoothService.toggle()
+            BluetoothService.toggle();
         }
     }
 
