@@ -17,16 +17,20 @@ Singleton {
     signal onBrightnessChange
 
     function changeBrightness(increment: bool) {
+        root.onBrightnessChange();
         if (increment) {
-            if (brightness == 100) {
+            if (brightness >= 100) {
                 return;
             }
             Quickshell.execDetached(["brightnessctl", "-n", "set", "5%+"]);
         } else {
-            if (brightness == 0) {
+            if (brightness <= 0) {
                 return;
             }
             Quickshell.execDetached(["brightnessctl", "-n", "set", "5%-"]);
+        }
+        if (!process.running) {
+            process.running = true
         }
     }
 
