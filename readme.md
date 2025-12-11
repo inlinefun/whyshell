@@ -2,6 +2,10 @@
 
 Just another minimal(?) quickshell configuration
 
+### Screenshots
+
+![Image one](.github/assets/one.png)
+
 ### Usage
 
 - `mkdir ~/.config/quickshell`
