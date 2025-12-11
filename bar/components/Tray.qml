@@ -17,7 +17,8 @@ MouseArea {
     hoverEnabled: true
     property color color: open ? Colors.primary : Colors.on_surface
     readonly property bool open: hovered | area.implicitHeight > 1
-    readonly property bool hovered: root.containsMouse | area.containsMouse
+    readonly property bool hovered: root.containsMouse | area.containsMouse | menuOpen
+    property bool menuOpen: false
     ArrowDownIcon {
         id: icon
         anchors {
@@ -77,7 +78,7 @@ MouseArea {
                                 if (event.button == Qt.LeftButton) {
                                     modelData.activate();
                                 } else if (event.button == Qt.RightButton) {
-                                    modelData.secondaryActivate();
+                                    menuAnchor.open();
                                 }
                             }
                             Item {
@@ -93,6 +94,19 @@ MouseArea {
                                 source: TrayService.getFormattedIcon(item.icon)
                                 mipmap: true
                                 implicitSize: 24
+                            }
+                            QsMenuAnchor {
+                                id: menuAnchor
+                                anchor {
+                                    item: item
+                                }
+                                menu: item.modelData.menu
+                                onOpened: {
+                                    root.menuOpen = true;
+                                }
+                                onClosed: {
+                                    root.menuOpen = false;
+                                }
                             }
                         }
                     }
