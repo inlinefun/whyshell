@@ -10,6 +10,9 @@ Singleton {
         if (icon.includes("spotify")) {
             return Quickshell.iconPath("/opt/spotify/icons/spotify-linux-24.png");
         }
+        if (icon.includes("jetbrains-toolbox")) {
+            return Quickshell.iconPath("/opt/jetbrains-toolbox/toolbox-tray-color.png");
+        }
         return icon;
     }
 }
