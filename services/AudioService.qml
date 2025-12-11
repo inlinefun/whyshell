@@ -39,13 +39,14 @@ Singleton {
     }
     function changeVolume(increment: bool) {
         if (increment) {
-            if (volume == 100)
+            if (volume >= 100)
                 return;
             audio.volume += 0.05;
         } else {
-            if (volume == 0)
+            if (volume <= 0)
                 return;
             audio.volume -= 0.05;
         }
+        audio.volume = Math.max(0.0, Math.min(1.0, audio.volume))
     }
 }
