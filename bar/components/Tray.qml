@@ -104,6 +104,9 @@ MouseArea {
                                 onOpened: {
                                     root.menuOpen = true;
                                 }
+                                onVisibleChanged: {
+                                    root.menuOpen = visible;
+                                }
                                 onClosed: {
                                     root.menuOpen = false;
                                 }
