@@ -18,6 +18,9 @@ Item {
             if (BatteryService.full) {
                 return Colors.primary_fixed;
             }
+            if (BatteryService.charge <= 20) {
+                return Colors.error;
+            }
             return Colors.on_surface;
         }
 
