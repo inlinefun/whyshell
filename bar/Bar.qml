@@ -49,46 +49,4 @@ PanelWindow {
         Volume {}
         Battery {}
     }
-    // PopupWindow {
-    //     id: popup
-    //     anchor {
-    //         item: tray
-    //         // edges: Edges.Bottom | Edges.Left
-    //         adjustment: PopupAdjustment.Slide
-    //         rect {
-    //             x: -(width / 2) + ((root.target?.width ?? 2) / 2)
-    //             y: root.height - 1
-    //         }
-    //     }
-    //     implicitWidth: container.implicitWidth
-    //     implicitHeight: container.properHeight + 1
-    //     color: "transparent"
-    //     visible: root.target !== null
-    //     Rectangle {
-    //         id: container
-    //         readonly property int properHeight: Math.max(previousHeight, currentHeight)
-    //         readonly property int currentHeight: root.activeTarget === null ? 1 : root.target === tray ? 200 : 100
-    //         property int previousHeight: 1
-    //         onCurrentHeightChanged: {
-    //             if (currentHeight > previousHeight) {
-    //                 previousHeight;
-    //             }
-    //         }
-    //         implicitWidth: 200
-    //         implicitHeight: properHeight
-    //         color: Colors.surface
-    //         bottomLeftRadius: 10
-    //         bottomRightRadius: 10
-    //         Behavior on implicitHeight {
-    //             AnimateNumber {
-    //                 onFinished: {
-    //                     container.previousHeight = container.currentHeight;
-    //                 }
-    //             }
-    //         }
-    //         Behavior on implicitWidth {
-    //             AnimateNumber {}
-    //         }
-    //     }
-    // }
 }
