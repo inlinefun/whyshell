@@ -6,12 +6,15 @@ import Quickshell.Services.SystemTray
 Singleton {
     id: root
     readonly property var items: SystemTray.items.values
+    /*
+     * NOT a very smart way, seems to work "fine"
+     */
     function getFormattedIcon(icon: string): string {
-        if (icon.includes("spotify")) {
-            return Quickshell.iconPath("/opt/spotify/icons/spotify-linux-24.png");
-        }
-        if (icon.includes("jetbrains-toolbox")) {
-            return Quickshell.iconPath("/opt/jetbrains-toolbox/toolbox-tray-color.png");
+        if (icon.includes("?path=")) {
+            const split = icon.split("?path=");
+            const file = split[0].replace("image://icon", "")
+            const path = split[1]
+            return Quickshell.iconPath(`${path}${file}.png`)
         }
         return icon;
     }
