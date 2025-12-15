@@ -20,6 +20,7 @@ Singleton {
             _init = true;
             return;
         }
+        PowerProfiles.profile = _profile;
         root.onProfileChange();
     }
 
