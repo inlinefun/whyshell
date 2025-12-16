@@ -9,6 +9,8 @@ Text {
     property bool italic: false
     property bool underline: false
     property int size: 16
+    property bool wordwrap: false
+    property int maxLines: 1
 
     color: Colors.on_surface
     font {
@@ -18,4 +20,6 @@ Text {
         underline: root.underline
         family: Constants.fontFamily
     }
+    maximumLineCount: maxLines
+    wrapMode: wordwrap ? Text.WordWrap : Text.NoWrap
 }

@@ -48,5 +48,6 @@ PanelWindow {
         Brightness {}
         Volume {}
         Battery {}
+        Notifications {}
     }
 }
