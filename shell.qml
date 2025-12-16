@@ -7,6 +7,6 @@ import qs.slideout
 
 ShellRoot {
     Bar {}
-    RightSlideout {}
+    // RightSlideout {}
     OnScreenDisplay {}
 }
