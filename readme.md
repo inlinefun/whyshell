@@ -1,4 +1,6 @@
-# moved to https://github.com/inlinefun/dotfiles
+<h1 align="center">whyshell</h1>
+
+## moved to https://github.com/inlinefun/dotfiles
 
 Just another minimal(?) quickshell configuration
 
